@@ -2,14 +2,14 @@ const express = require('express')
 const path = require('path')
 
 const accountRoutes = require('./routes/accounts')
-const serviceRoutes = require('./routes/services')
+const servicesRoutes = require('./routes/services')
 const {accounts, users} = require('./data')
 
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({extended: true}))
-app.use('/services', serviceRoutes)
+app.use('/services', servicesRoutes)
 app.use('/account', accountRoutes)
 app.set('view engine', 'ejs')
 

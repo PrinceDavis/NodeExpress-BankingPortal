@@ -1,6 +1,6 @@
 const express = require('express')
 
-const data = require('../data')
+const {accounts} = require('../data')
 
 const router = express.Router()
 
