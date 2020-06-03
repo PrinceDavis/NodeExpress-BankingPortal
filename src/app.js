@@ -32,7 +32,7 @@ app.get('/credit', (req, res) => {
 })
 
 app.get('/checking', (req, res) => {
-  res.render('account', {account: account.checking})
+  res.render('account', {account: accounts.checking})
 })
 
 
