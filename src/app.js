@@ -48,7 +48,7 @@ app.post('/transfer', (req, res) => {
   const {amount, from, to} = req.body
   accounts[from].balance -= parseInt(amount)
   accounts[to].balance += parseInt(amount)
-  accountsJSON = JSON.parse(accounts)
+  accountsJSON = JSON.stringify(accounts)
 
   fs.writeSync(path.join(__dirname, 'json/accounts.json'), {encoding: 'UTF8'})
   res.render('transfer', {message: "Transfer Completed"})
