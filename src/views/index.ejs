@@ -5,9 +5,9 @@
   </h1>
   <a href="/profile">Profile</a>
 </div>
-<%for(const item of accounts){%>
-<%- include('summary', {account: item.checking})%>
-<%}%>
+<%- include('summary', {account: accounts.savings})%>
+<%- include('summary', {account: accounts.checking})%>
+<%- include('summary', {account: account.credit})%>
 <br>
 <a href="/transfer">Transfer</a>
 <%- include('footer')%>
