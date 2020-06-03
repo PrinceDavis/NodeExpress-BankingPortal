@@ -23,6 +23,18 @@ app.get('/', (req, res) => {
   res.render('index', {title: 'Account Summary', accounts})
 })
 
+app.get('/savings', (req, res) => {
+  res.render('account', {account: accounts.saving})
+})
+
+app.get('/credit', (req, res) => {
+  res.render('account', {account: accounts.credit})
+})
+
+app.get('/checking', (req, res) => {
+  res.render('account', {account: account.checking})
+})
+
 
 app.listen(3000,
   () => console.log('PS Project Running on port 3000!'))
