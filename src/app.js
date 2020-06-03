@@ -7,6 +7,7 @@ const fs = require('fs')
 const app = express()
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -37,6 +38,20 @@ app.get('/checking', (req, res) => {
 
 app.get("/profile", (req, res) => {
   res.render('profile', {user: users[0]})
+})
+
+app.get('/transfer', (req, res) => {
+  res.render('transfer')
+})
+
+app.post('/transfer', (req, res) => {
+  const {amount, from, to} = req.body
+  accounts[from].balance -= parseInt(amount)
+  accounts[to].balance += parseInt(amount)
+  accountsJSON = JSON.parse(accounts)
+
+  fs.writeSync(path.join(__dirname, 'json/accounts.json'), {encoding: 'UTF8'})
+  res.render('transfer', {message: "Transfer Completed"})
 })
 
 
